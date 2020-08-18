@@ -32,7 +32,7 @@ void loop() {
              mock_temperature_sensor(),get_current_milli_time(),
              mock_driver_sensor(), get_current_milli_time());
   send_packet();
-  delay(50); 
+  delay(100); 
   
 }
 
@@ -55,7 +55,7 @@ void set_packet(SENSORTYPE speed ,TIME speedTime,
 
 
  void send_packet(){
-  
+  Serial.println(START_SYMBOL);
   Serial.println(myPacket.speed);
   Serial.println(myPacket.speedTime);
   Serial.println(myPacket.batteryConsumption);
@@ -85,5 +85,5 @@ SENSORTYPE mock_driver_sensor(){
   }
 
 TIME get_current_milli_time(){
-  return millis() - startMillis;
+  return (millis() - startMillis)/100;
   }
